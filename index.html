@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LEarn about the select</title>
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <p>Calculator for two values</p>
+        <br /><br />
+        <input type="number" placeholder="enter some value" id="box1" />
+        <br /><br />
+        <input type="number" placeholder="enter some value" id="box2" />
+        <br /><br />
+        <select id="operator">
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="/">/</option>
+        </select>
+        <button id="result">=</button>
+        <button id="clear">clear</button>
+        <br /><br />
+        <p id="output">The result is:</p>
+      </form>
+    </div>
+    <style>
+      * {
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        background-color: rgb(255, 253, 120);
+      }
+
+      .container {
+        height: 70vh;
+        width: 50vw;
+        border: 2px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        background-color: #fff;
+        border-radius: 1rem;
+        border: none;
+        box-shadow: 10px 10px 15px gray;
+      }
+
+      body {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+
+      input {
+        font-size: large;
+        background-color: rgb(233, 233, 233);
+        height: 7vh;
+        width: 30vw;
+      }
+
+      #operator {
+        font-size: x-large;
+        width: 6vw;
+      }
+
+      #result {
+        font-size: larger;
+        width: 6vw;
+      }
+
+      p {
+        height: 10vh;
+        width: 40vw;
+        border: 2px solid black;
+        font-size: xx-large;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-weight: 300;
+        border: none;
+      }
+
+      #clear {
+        font-size: larger;
+        margin-left: 1rem;
+      }
+    </style>
+    <script>
+      let box1 = document.querySelector("#box1");
+      let box2 = document.querySelector("#box2");
+      let operator = document.querySelector("#operator");
+      let clear = document.querySelector("#clear");
+
+      let result = document.querySelector("#result");
+      let output = document.querySelector("#output");
+
+      result.addEventListener("click", (evt) => {
+        evt.preventDefault();
+        let value1 = parseInt(box1.value);
+        let value2 = parseInt(box2.value);
+        let selectoperator = operator.value;
+        if (isNaN(value1) || isNaN(value2)) {
+          output.innerHTML =
+            "Error: Please enter valid numbers in both fields.";
+          return;
+        }
+        if (selectoperator === "+") {
+          output.innerHTML = sum(value1, value2);
+        } else if (selectoperator === "-") {
+          output.innerHTML = minus(value1, value2);
+        } else if (selectoperator === "*") {
+          output.innerHTML = mul(value1, value2);
+        } else if (selectoperator === "/") {
+          if (value2 === 0) {
+            output.innerHTML = "Error: Division by zero is not allowed.";
+          } else {
+            output.innerHTML = div(value1, value2);
+          }
+        }
+      });
+
+      // here i'm using a button of clear to clear everything
+
+      clear.addEventListener("click", (evt) => {
+        evt.preventDefault();
+        box1.value = "";
+        box2.value = "";
+        output.innerHTML = "";
+      });
+
+      function sum(value1, value2) {
+        return `The result is :${value1 + value2}`;
+      }
+
+      function minus(value1, value2) {
+        return `The result is :${value1 - value2}`;
+      }
+      function mul(value1, value2) {
+        return `The result is :${value1 * value2}`;
+      }
+      function div(value1, value2) {
+        return `The result is :${value1 / value2}`;
+      }
+    </script>
+  </body>
+</html>
