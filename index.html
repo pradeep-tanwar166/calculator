@@ -39,6 +39,9 @@
         background-color: rgb(255, 253, 120);
       }
 
+      @media (min-width :1200px) and (max-width:1600px) {
+        
+     
       .container {
         height: 70vh;
         width: 50vw;
@@ -60,6 +63,8 @@
       }
 
       input {
+      border-radius: 10px;
+      border: none;
         font-size: large;
         background-color: rgb(233, 233, 233);
         height: 7vh;
@@ -91,6 +96,48 @@
         font-size: larger;
         margin-left: 1rem;
       }
+
+    }
+
+   @media (min-width:480px) and (max-width:680px){
+    .container {
+        height: 400px;
+        width: 300px;
+        border: 2px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        background-color: #fff;
+        border-radius: 1rem;
+        border: none;
+        box-shadow: 10px 10px 15px gray;
+      }
+      body{
+        background-color: rgb(79, 79, 100);
+      }
+      p {
+        height: 10vh;
+        width: 40vw;
+        border: 2px solid black;
+        font-size: large;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-weight: 600;
+        border: 2px solid black;
+        overflow: hidden;
+      }
+
+      input {
+      border-radius: 5px;
+      border: none;
+        font-size: small;
+        background-color: rgb(233, 233, 233);
+        height: 30px;
+        width: 200px;
+      }
+
+   }
     </style>
     <script>
       let box1 = document.querySelector("#box1");
